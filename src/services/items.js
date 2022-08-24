@@ -65,6 +65,25 @@ async function getAllItems(lowestPrice, highestPrice, categories, colors, sizes)
 }
 
 async function deleteItemById(id) {
+    await prisma.size.deleteMany({
+        where: {
+            itemId: id
+        }
+    })
+    await prisma.item.update({
+        where:{
+            id:id
+        },
+        data:{
+            categories:{
+                deleteMany: {},
+            },
+            colors:{
+                deleteMany: {},
+            }
+        }
+    })
+
     await prisma.item.delete({
         where: {
             id: id,
@@ -72,8 +91,77 @@ async function deleteItemById(id) {
     })
 }
 
-async function createItem(name, details, description, price, categoryIds) {
+async function createItem(id, name, details, price) {
+    return await prisma.item.create({
+        data: {
+            id: id,
+            name: name,
+            details: details,
+            price: price
+        }
+    })
+}
 
+async function updateItem(id, name, details, price, categories, colors, sizes) {
+    await prisma.item.update({
+        where:{
+            id:id
+        },
+        data:{
+            categories:{
+                deleteMany: {},
+            },
+            colors:{
+                deleteMany: {},
+            }
+        }
+    })
+
+    return await prisma.item.update({
+        where: {
+            id: id
+        },
+        data: {
+            name: name,
+            details: details,
+            price: price,
+            categories: {
+                create: categories.map((category) => (
+                    {
+                        categoryId: category
+                    }
+                ))
+            },
+            colors:{
+                create: colors.map((color) => (
+                    {
+                        colorId: parseInt(color)
+                    }
+                ))
+            }
+
+        }
+    })
+
+}
+
+async function createSizeRelation(id, sizes) {
+
+    await prisma.size.deleteMany({
+        where: {
+            itemId: id
+        }
+    })
+    return await prisma.size.createMany({
+        data: sizes.map((size) => {
+            return (
+                {
+                    itemId: id,
+                    size: size
+                }
+            )
+        })
+    })
 }
 
 async function getItemById(id) {
@@ -120,10 +208,11 @@ async function getItemNameById(id) {
 
     })
 }
-async  function getMultipleItemsById(ids){
+
+async function getMultipleItemsById(ids) {
     return await prisma.item.findMany({
         where: {
-           OR: ids.map(id => ({id:id}))
+            OR: ids.map(id => ({id: id}))
         },
         select: {
             id: true,
@@ -149,11 +238,14 @@ async  function getMultipleItemsById(ids){
         }
     })
 }
+
 module.exports = {
-    getMultipleItemsById:getMultipleItemsById,
+    getMultipleItemsById: getMultipleItemsById,
     getAllItems: getAllItems,
     getItemNameById: getItemNameById,
     createItem: createItem,
     getItemById: getItemById,
-    deleteItemById: deleteItemById
+    deleteItemById: deleteItemById,
+    updateItem, updateItem,
+    createSizeRelation: createSizeRelation
 };

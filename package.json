@@ -19,7 +19,8 @@
     "nodemailer": "^6.7.8",
     "nodemon": "^2.0.19",
     "save": "^2.5.0",
-    "stripe": "^10.3.0"
+    "stripe": "^10.3.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "prisma": "^4.2.1"

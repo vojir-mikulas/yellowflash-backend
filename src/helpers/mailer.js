@@ -35,6 +35,7 @@ const mailer = async (paymentIntent) => {
             let vat = (15 / 100) * existingItem.price;
             return await createTemplate('./src/htmlTemplates/itemRowTemplate.html', {
                 id:item.id,
+                invoice: order.invoice,
                 quantity:item.quantity,
                 VAT:Math.round(vat),
                 priceWithVAT: existingItem.price,
