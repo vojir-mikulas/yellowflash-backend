@@ -1,0 +1,111 @@
+
+<body style="margin: 50px;padding: 0;font-family: Roboto;color: #4e5358;">
+<main style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+    <header style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;display: flex;width: 100%;justify-content: space-between;align-items: flex-start;">
+        <div class="logo" style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;"><h1 style="margin: 0px;padding: 0;font-family: 'Staatliches', sans-serif;color: #292D32;font-size: 3.3rem;">YELLOWFLASH</h1></div>
+        <div class="companyInfo" style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;text-align: right;">
+            Yellowflash | YF s.r.o <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+            Totálněchábrová 923/0 <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+            Praha <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+            118 00 <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+            Czech Republic <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+            ID: 420690909 <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+            VAT ID: CZ69696969696
+        </div>
+    </header>
+</main><main style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+    <section style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+        <h2 style="margin: 0px;padding: 0;font-family: Roboto;color: #292D32;margin-top: 20px;margin-bottom: 30px;">Invoice</h2>
+        <div style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+            <div class="invoice--wrapper" style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;display: flex;justify-content: space-between;font-size: 15px;">
+                <div style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    Invoice #: 29232 <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    Invoice Date: {{date}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    Order Date : {{date}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    Order Number : 29232 <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    Payment Method: Credit Card(stripe) <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    Shipping Method: {{shippingMethod}}
+                </div>
+                <div style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    <h3 style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;"> Bill to:</h3>
+
+                    {{fullName}}<br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    {{address}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    {{zipcode}} {{city}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    {{country}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    Tel.: +420 {{phone}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+
+                </div>
+                <div style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    <h3 style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;"> Ship to:</h3>
+
+                    {{fullName}}<br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    {{address}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    {{zipcode}} {{city}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    {{country}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    Tel.: +420 {{phone}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+
+                </div>
+            </div>
+
+            <table class="table" style="margin: 35px 0;padding: 0;font-family: Roboto;color: #4e5358;border-collapse: collapse;font-size: 0.9rem;width: 100%;">
+                <thead style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                <tr style="background-color: #292D32;margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    <th style="margin: 0px;padding: 12px;font-family: Roboto;color: white;text-align: left;font-weight: bold;min-width: 100px;">Description</th>
+                    <th style="margin: 0px;padding: 12px;font-family: Roboto;color: white;text-align: left;font-weight: bold;min-width: 100px;">Cost (ex.VAT)</th>
+                    <th style="margin: 0px;padding: 12px;font-family: Roboto;color: white;text-align: left;font-weight: bold;min-width: 100px;">Qty</th>
+                    <th style="margin: 0px;padding: 12px;font-family: Roboto;color: white;text-align: left;font-weight: bold;min-width: 100px;">VAT 15%</th>
+                    <th style="margin: 0px;padding: 12px;font-family: Roboto;color: white;text-align: left;font-weight: bold;min-width: 100px;">Total (incl. VAT)</th>
+                </tr>
+                </thead>
+                <tbody style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                {{{items}}}
+                <tr style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+
+                </tr>
+                <tr style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+
+                </tr>
+                </tbody>
+            </table>
+            <div class="table--wraper" style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                <table class="table" style="width: 50%;margin-left: auto;padding: 0;font-family: Roboto;color: #4e5358;border-collapse: collapse;font-size: 0.9rem;">
+                    <tbody style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    <tr style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        <td style="margin: 0px;padding: 12px;font-family: Roboto;color: #4e5358;width: 50%;">Shipping (ex.VAT)</td>
+                        <td style="margin: 0px;padding: 12px;font-family: Roboto;color: #4e5358;">
+                            {{shipping}} Kč
+                        </td>
+                    </tr>
+                    <tr style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        <td style="margin: 0px;padding: 12px;font-family: Roboto;color: #4e5358;width: 50%;">Subtotal (ex.VAT)</td>
+                        <td style="margin: 0px;padding: 12px;font-family: Roboto;color: #4e5358;">
+                            {{subtotal}} Kč
+                        </td>
+                    </tr>
+                    <tr style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        <td style="margin: 0px;padding: 12px;font-family: Roboto;color: #4e5358;width: 50%;">VAT15%</td>
+                        <td style="margin: 0px;padding: 12px;font-family: Roboto;color: #4e5358;">
+                            {{totalVAT}} Kč
+                        </td>
+                    </tr>
+                    <tr class="finalPrice" style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;font-weight: bold;border-top: 2px black solid">
+                        <td style="margin: 0px;padding: 12px;font-family: Roboto;color: #4e5358;width: 50%;"><span class="black-text" style="margin: 0px;padding: 0;font-family: Roboto;color: black;">Total (incl VAT)</span></td>
+                        <td style="margin: 0px;padding: 12px;font-family: Roboto;color: #4e5358;">
+                            <span class="black-text" style="margin: 0px;padding: 0;font-family: Roboto;color: black;">{{totalWithVAT}}Kč</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+<footer style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+    <div class="copyright" style="margin: 0px;padding: 10px;font-family: Roboto;color: #4e5358;border: 2px #292D32 solid;">
+        <div style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">JSTE FAKT SUPRA ALE BEZ A ❤</div>
+        <span style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">YELLOWFLASH &copy Copyright 2023. All Rights Reserved.</span>
+    </div>
+</footer>
+
+</body>
