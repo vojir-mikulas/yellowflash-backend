@@ -39,7 +39,9 @@ app.use((req, res, next) => {
 });
 
 
- 
+ app.get("/",(req,res)=>{
+     res.send("JSEM ZAPLEJ!")
+ })
 
 app.use('/item', itemRoute)
 app.use('/order',orderRoute)
