@@ -4,7 +4,6 @@
   "description": "backend",
   "main": "server.js",
   "scripts": {
-    "devStart": "nodemon src/server.js",
     "start": "node src/server.js"
   },
   "author": "Mikuláš Vojíř",

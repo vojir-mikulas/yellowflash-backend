@@ -1,6 +1,7 @@
 //DEPENDENCIES
 require("dotenv").config()
 
+const port = 3000;
 const express = require('express');
 const app = express();
 const cors = require("cors")
@@ -50,4 +51,4 @@ app.use('/images', imageRoute)
 app.use("/colors", colorRoute)
 app.use("/sizes", sizeRoute)
 app.use("/stripe",stripeRoute)
-app.listen(3000)
+app.listen(process.env.PORT || port, ()=> console.log("Server is running.."))
