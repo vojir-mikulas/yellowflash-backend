@@ -1,6 +1,6 @@
 const express = require('express')
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
-const endpointSecret = "whsec_1588f9891494bf964355bb997897a6fe65137588b077ec89d5f3612ff9c1cfed";
+const endpointSecret = process.env.STRIPE_WH_PRIVATE_KEY
 const {getItemById} = require("../services/items");
 const {createOrder} = require("../services/orders");
 const {getShippingPrice} = require("../services/shippingMethod");
