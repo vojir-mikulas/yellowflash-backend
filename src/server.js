@@ -28,11 +28,9 @@ app.use("/public", express.static('public/img'));
 app.use((req, res, next) => {
     const allowedOrigins = [process.env.CLIENT_URL, process.env.ADMIN_URL];
     const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
-    }
     //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,DELETE,POST, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.header('Access-Control-Allow-Credentials', true);
     return next();
