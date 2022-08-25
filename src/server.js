@@ -48,16 +48,11 @@ app.use(cors({
      res.send("JSEM ZAPLEJ!")
  })
 app.get("/mailtest",async(req,res)=>{
-    try{
+
         await mailer({
-            id:"pi_3LafpAFLfwWiF0fG0IB80yfa"
+            id:"pi_3LagHeFLfwWiF0fG116PAOKu"
         })
-        res.status(200).send()
 
-
-    }catch{
-        res.status(500).send()
-    }
 })
 
 app.use('/item', itemRoute)

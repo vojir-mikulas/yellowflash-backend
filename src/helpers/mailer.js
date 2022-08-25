@@ -1,9 +1,9 @@
 const nodemailer = require('nodemailer');
-const html_to_pdf = require('html-pdf-node');
+//const html_to_pdf = require('html-pdf-node');
+const htmltopdf = require('html-pdf')
 const {getOrderById} = require("../services/orders");
 const {decodeItems} = require("./decodeItems");
 const handlebars = require('handlebars');
-const {promisify} = require('util');
 const fs = require('fs/promises');
 const {getMultipleItemsById} = require("../services/items");
 const {getShippingPrice} = require("../services/shippingMethod");
@@ -44,7 +44,7 @@ const mailer = async (paymentIntent) => {
         }));
     let totalPrice = getTotalPrice(items,itemData)
     let totalVAT = Math.round((15 / 100) * totalPrice)
-    let pdfToSend = await createTemplate('./src/htmlTemplates/pdf.html', {
+    let pdfToSend = await createTemplate('./src/htmlTemplates/pdftable.html', {
         fullName: `${order.name} ${order.surname}`,
         address: order.address,
         zipcode: order.zipcode,
@@ -71,7 +71,38 @@ const mailer = async (paymentIntent) => {
 
     let options = {format: 'A4', path: `./invoices/xd.pdf`};
     let file = {content: pdfToSend};
-    html_to_pdf.generatePdf(file, options).then(async (pdfBuffer) => {
+
+    htmltopdf.create(pdfToSend, {format: "A4"}).toFile(`./invoices/xd.pdf`, async function(err, res) {
+        if (err) return console.log(err);
+        if(res){
+            let transporter = nodemailer.createTransport({
+                service: "gmail",
+                host: "smtp.gmail.com",
+                port: 465,
+                auth: {
+                    user: process.env.MAIL_LOGIN, // generated ethereal user
+                    pass: process.env.MAIL_PASSWORD, // generated ethereal password
+                },
+                tls: {
+                    rejectUnauthorized: false
+                }
+            });
+
+            // send mail with defined transport object
+            let info = await transporter.sendMail({
+                from: process.env.MAIL_LOGIN, // sender address
+                to: order.email, // list of receivers
+                subject: "Platba proběhla úspěšně ✔ - Yellowflash", // Subject line
+                html: mailToSend, // html body
+                attachments: [{
+                    filename: 'invoice.pdf',
+                    path: './invoices/xd.pdf',
+                    contentType: 'application/pdf'
+                }]
+            });
+        }
+    })
+   /* html_to_pdf.generatePdf(file, options).then(async (pdfBuffer) => {
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
             service: "gmail",
@@ -100,7 +131,7 @@ const mailer = async (paymentIntent) => {
                });
     });
 
-
+*/
 }
 
 module.exports = {

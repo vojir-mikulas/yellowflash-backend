@@ -19,36 +19,49 @@
            <h2 style="margin: 0px;padding: 0;font-family: Roboto;color: #292D32;margin-top: 20px;margin-bottom: 30px;">Invoice</h2>
            <div class="invoice--wrapper" style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; align-content: flex-start; align-items: flex-start;font-size: 15px;">
 
-            <div style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                Invoice #: {{invoice}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                Invoice Date: {{date}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                Order Date : {{date}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                Order Number : {{invoice}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                Payment Method: Credit Card(stripe) <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                Shipping Method: {{shippingMethod}}
-            </div>
-            <div style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                <h3 style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;"> Bill to:</h3>
 
-                {{fullName}}<br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                {{address}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                {{zipcode}} {{city}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                {{country}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                Tel.: +420 {{phone}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
 
-            </div>
-            <div style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                <h3 style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;"> Ship to:</h3>
 
-                {{fullName}}<br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                {{address}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                {{zipcode}} {{city}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                {{country}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-                Tel.: +420 {{phone}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
-
-            </div>
            </div>
         </div>
+        <table style="width:100%">
+            <tbody  >
+            <tr  >
+                <td>
+                    <div style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        Invoice #: {{invoice}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        Invoice Date: {{date}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        Order Date : {{date}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        Order Number : {{invoice}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        Payment Method: Credit Card(stripe) <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        Shipping Method: {{shippingMethod}}
+                    </div>
+                </td>
+                <td>
+                    <div style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        <h3 style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;"> Bill to:</h3>
+
+                        {{fullName}}<br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        {{address}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        {{zipcode}} {{city}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        {{country}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                        Tel.: +420 {{phone}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+
+                    </div>
+                </td>
+                <td><div style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    <h3 style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;"> Ship to:</h3>
+
+                    {{fullName}}<br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    {{address}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    {{zipcode}} {{city}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    {{country}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+                    Tel.: +420 {{phone}} <br style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
+
+                </div></td>
+            </tr>
+            </tbody>
+        </table>
         <div style="margin: 0px;padding: 0;font-family: Roboto;color: #4e5358;">
 
 
