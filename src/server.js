@@ -16,6 +16,7 @@ const shippingMethodRoute = require("./routes/shippingMethod")
 const orderRoute = require("./routes/order")
 const discountRoute = require("./routes/discountCode")
 const {mailer} = require("./helpers/mailer");
+const {syncFilesOnStartup} = require("./helpers/syncFilesOnStartup");
 //MIDDLEWARES
 app.use((req, res, next) => {
 
@@ -30,7 +31,7 @@ app.use("/public", express.static('public/img'));
 app.use(cors({
     origin: "*",
     credentials: true,
-    methods: ["GET","POST","PUT","DELETE","OPTIONS"]
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }))
 /* app.use((req, res, next) => {
     const allowedOrigins = [process.env.CLIENT_URL, process.env.ADMIN_URL];
@@ -44,14 +45,14 @@ app.use(cors({
 });
 */
 
- app.get("/",(req,res)=>{
-     res.send("JSEM ZAPLEJ!")
- })
-app.get("/mailtest",async(req,res)=>{
+app.get("/", (req, res) => {
+    res.send("JSEM ZAPLEJ!")
+})
+app.get("/mailtest", async (req, res) => {
 
     try {
         await mailer({
-            id:"pi_3LafpAFLfwWiF0fG0IB80yfa"
+            id: "pi_3LafpAFLfwWiF0fG0IB80yfa"
         })
     } catch (error) {
         console.error(error);
@@ -62,13 +63,18 @@ app.get("/mailtest",async(req,res)=>{
 
 })
 
+
+
 app.use('/item', itemRoute)
-app.use('/order',orderRoute)
-app.use('/discountCode',discountRoute)
-app.use('/shipping',shippingMethodRoute)
+app.use('/order', orderRoute)
+app.use('/discountCode', discountRoute)
+app.use('/shipping', shippingMethodRoute)
 app.use('/categories', categoryRoute)
 app.use('/images', imageRoute)
 app.use("/colors", colorRoute)
 app.use("/sizes", sizeRoute)
-app.use("/stripe",stripeRoute)
-app.listen(process.env.PORT || port, ()=> console.log("Server is running.."))
+app.use("/stripe", stripeRoute)
+app.listen(process.env.PORT || port, () => {
+    console.log("Server is running..")
+    if(process.env.SYNC_FILES) syncFilesOnStartup()
+})

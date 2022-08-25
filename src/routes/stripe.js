@@ -7,6 +7,7 @@ const {getShippingPrice} = require("../services/shippingMethod");
 const {verifyDiscountCode} = require("../services/discountCode");
 const {mailer} = require("../helpers/mailer");
 
+
 const router = express.Router();
 
 router.post("/secret", async (req, res) => {
@@ -60,14 +61,14 @@ router.post('/webhook', express.raw({type: 'application/json'}),async (request, 
         case 'payment_intent.succeeded':
             const paymentIntent = event.data.object;
             await mailer(paymentIntent)
-
+            response.status(200).send();
             break;
         default:
             console.log(`Unhandled event type ${event.type}`);
     }
 
     // Return a 200 response to acknowledge receipt of the event
-    response.status(200).send();
+
 });
 
 
