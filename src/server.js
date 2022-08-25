@@ -25,7 +25,13 @@ app.use((req, res, next) => {
     }
 });
 app.use("/public", express.static('public/img'));
-app.use((req, res, next) => {
+
+app.use(cors({
+    origin: "*",
+    credentials: true,
+    methods: ["GET","POST","PUT","DELETE","OPTIONS"]
+}))
+/* app.use((req, res, next) => {
     const allowedOrigins = [process.env.CLIENT_URL, process.env.ADMIN_URL];
     const origin = req.headers.origin;
     res.setHeader('Access-Control-Allow-Origin', origin);
@@ -35,7 +41,7 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Credentials', true);
     return next();
 });
-
+*/
 
  app.get("/",(req,res)=>{
      res.send("JSEM ZAPLEJ!")
