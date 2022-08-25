@@ -50,7 +50,7 @@ app.use(cors({
 app.get("/mailtest",async(req,res)=>{
 
         await mailer({
-            id:"pi_3LagHeFLfwWiF0fG116PAOKu"
+            id:"pi_3LafpAFLfwWiF0fG0IB80yfa"
         })
 
 })
