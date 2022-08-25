@@ -56,7 +56,8 @@ const mailer = async (paymentIntent) => {
         date: () =>(getToday()),
         subtotal: totalPrice - totalVAT,
         totalVAT: totalVAT,
-        totalWithVAT: totalPrice
+        totalWithVAT: totalPrice,
+        invoice:order.invoice
     })
 
     let mailToSend = await createTemplate("./src/htmlTemplates/email.html", {
@@ -77,7 +78,7 @@ const mailer = async (paymentIntent) => {
             host: "smtp.gmail.com",
             port: 465,
             auth: {
-                user: process.env.MAIL_LOGIN , // generated ethereal user
+                user: process.env.MAIL_LOGIN, // generated ethereal user
                 pass: process.env.MAIL_PASSWORD, // generated ethereal password
             },
             tls: {
@@ -87,7 +88,7 @@ const mailer = async (paymentIntent) => {
 
         // send mail with defined transport object
               let info = await transporter.sendMail({
-                   from: 'noreply.yellowflash@gmail.com ', // sender address
+                   from: process.env.MAIL_LOGIN, // sender address
                    to: order.email, // list of receivers
                    subject: "Platba proběhla úspěšně ✔ - Yellowflash", // Subject line
                    html: mailToSend, // html body

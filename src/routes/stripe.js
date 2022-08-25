@@ -59,8 +59,8 @@ router.post('/webhook', express.raw({type: 'application/json'}),async (request, 
     switch (event.type) {
         case 'payment_intent.succeeded':
             const paymentIntent = event.data.object;
-           // await mailer(paymentIntent)
-            console.log("mail poslán!")
+            await mailer(paymentIntent)
+
             break;
         default:
             console.log(`Unhandled event type ${event.type}`);

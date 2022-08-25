@@ -22,6 +22,7 @@ model shippingMethod {
 model order {
   id                String          @id
   status            String          @default("V přípravě")
+  invoice           int             @unique @default(autoincrement())
   items             String
   amount            Int
   shippingMethod    String
