@@ -71,7 +71,7 @@ const mailer = async (paymentIntent) => {
     })
 
 
-    let options = {format: 'A4', childProcessOptions: { env: { OPENSSL_CONF: '/dev/null' } }};
+    let options = {width:"1080px",height:"1920px", childProcessOptions: { env: { OPENSSL_CONF: '/dev/null' } }};
 
 
 
