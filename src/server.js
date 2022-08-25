@@ -49,10 +49,11 @@ app.use(cors({
  })
 app.get("/mailtest",async(req,res)=>{
     try{
-        res.status(200).send()
         await mailer({
             id:"pi_3LafpAFLfwWiF0fG0IB80yfa"
         })
+        res.status(200).send()
+
 
     }catch{
         res.status(500).send()
