@@ -52,7 +52,7 @@ app.get("/mailtest", async (req, res) => {
 
     try {
         await mailer({
-            id: "pi_3LafpAFLfwWiF0fG0IB80yfa"
+            id: "pi_3LagHeFLfwWiF0fG116PAOKu"
         })
     } catch (error) {
         console.error(error);
