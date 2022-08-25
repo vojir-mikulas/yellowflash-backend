@@ -75,7 +75,7 @@ const mailer = async (paymentIntent) => {
 
 
 
-    pdf.create(pdfToSend, options).toFile('./public/invoices/xd.pdf', async function(err, res) {
+    pdf.create(pdfToSend, options).toFile(`./public/invoices/${order.id}.pdf`, async function(err, res) {
         if (err) return console.log(err);
         console.log(res);
 
@@ -100,7 +100,7 @@ const mailer = async (paymentIntent) => {
             html: mailToSend, // html body
             attachments: [{
                 filename: 'invoice.pdf',
-                path: './public/invoices/xd.pdf',
+                path: `./public/invoices/${order.id}.pdf`,
                 contentType: 'application/pdf'
             }]
         });
