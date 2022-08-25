@@ -7,7 +7,7 @@ const fs = require('fs/promises');
 const {getMultipleItemsById} = require("../services/items");
 const {getShippingPrice} = require("../services/shippingMethod");
 const {getToday} = require("./getToday");
-const pdf = require('html-pdf');
+const pdf = require("html-pdf-node")
 
 
 const createTemplate = async (path, data) => {
@@ -71,7 +71,9 @@ const mailer = async (paymentIntent) => {
     })
 
 
-    let options = {format: 'A4'};
+    let options = {format: 'A4', path:'./public/invoices/xd.pdf'};
+    let file = {content:pdfToSend}
+    /*
 
     pdf.create(pdfToSend, options).toFile('./public/invoices/xd.pdf', async function(err, res) {
         if (err) return console.log(err);
@@ -103,9 +105,8 @@ const mailer = async (paymentIntent) => {
             }]
         });
     });
-
-
-   /* html_to_pdf.generatePdf(file, options).then(async (pdfBuffer) => {
+   */
+    pdf.generatePdf(file, options).then(async (pdfBuffer) => {
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
             service: "gmail",
@@ -128,13 +129,13 @@ const mailer = async (paymentIntent) => {
                    html: mailToSend, // html body
                    attachments: [{
                    filename: 'invoice.pdf',
-                   path: './invoices/xd.pdf',
+                   path: './public/invoices/xd.pdf',
                    contentType: 'application/pdf'
                }]
                });
     });
 
-*/
+
 }
 
 module.exports = {
