@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const htmltopdf = require('html-pdf')
+
 const {getOrderById} = require("../services/orders");
 const {decodeItems} = require("./decodeItems");
 const handlebars = require('handlebars');
@@ -7,7 +7,7 @@ const fs = require('fs/promises');
 const {getMultipleItemsById} = require("../services/items");
 const {getShippingPrice} = require("../services/shippingMethod");
 const {getToday} = require("./getToday");
-
+const pdf = require('html-pdf');
 
 
 const createTemplate = async (path, data) => {
@@ -25,7 +25,7 @@ let getTotalPrice = (items,itemData)=>{
     return price
 }
 const mailer = async (paymentIntent) => {
-    const order = await getOrderById("pi_3LafpAFLfwWiF0fG0IB80yfa")
+    const order = await getOrderById(paymentIntent.id)
     const items = decodeItems(order.items)
     const itemData = await getMultipleItemsById(items.map((item) => (item.id)))
     const shippingMethod = await getShippingPrice(order.shippingMethod)
@@ -70,38 +70,39 @@ const mailer = async (paymentIntent) => {
         phone: order.phone,
     })
 
-    let options = {format: 'A4', path: `./invoices/xd.pdf`};
-    let file = {content: pdfToSend};
 
+    let options = {format: 'A4'};
 
+    pdf.create(pdfToSend, options).toFile('./public/invoices/xd.pdf', async function(err, res) {
+        if (err) return console.log(err);
+        console.log(res); // { filename: '/app/businesscard.pdf' }
 
-            let transporter = nodemailer.createTransport({
-                service: "gmail",
-                host: "smtp.gmail.com",
-                port: 465,
-                auth: {
-                    user: process.env.MAIL_LOGIN, // generated ethereal user
-                    pass: process.env.MAIL_PASSWORD, // generated ethereal password
-                },
-                tls: {
-                    rejectUnauthorized: false
-                }
-            });
+        let transporter = nodemailer.createTransport({
+            service: "gmail",
+            host: "smtp.gmail.com",
+            port: 465,
+            auth: {
+                user: process.env.MAIL_LOGIN, // generated ethereal user
+                pass: process.env.MAIL_PASSWORD, // generated ethereal password
+            },
+            tls: {
+                rejectUnauthorized: false
+            }
+        });
 
-            // send mail with defined transport object
-            let info = await transporter.sendMail({
-                from: process.env.MAIL_LOGIN, // sender address
-                to: order.email, // list of receivers
-                subject: "Platba proběhla úspěšně ✔ - Yellowflash", // Subject line
-                html: mailToSend, // html body
-                attachments: [{
-                    filename: 'invoice.pdf',
-                    path: './invoices/xd.pdf',
-                    contentType: 'application/pdf'
-                }]
-            });
-
-
+        // send mail with defined transport object
+        let info = await transporter.sendMail({
+            from: process.env.MAIL_LOGIN, // sender address
+            to: order.email, // list of receivers
+            subject: "Platba proběhla úspěšně ✔ - Yellowflash", // Subject line
+            html: mailToSend, // html body
+            attachments: [{
+                filename: 'invoice.pdf',
+                path: './public/invoices/xd.pdf',
+                contentType: 'application/pdf'
+            }]
+        });
+    });
 
 
    /* html_to_pdf.generatePdf(file, options).then(async (pdfBuffer) => {
