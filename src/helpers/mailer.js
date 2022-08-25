@@ -70,10 +70,9 @@ const mailer = async (paymentIntent) => {
 
     let options = {format: 'A4', path: `./invoices/xd.pdf`};
     let file = {content: pdfToSend};
-/*
-    htmltopdf.create(pdfToSend, {format: "A4"}).toFile(`./invoices/xd.pdf`, async function(err, res) {
-        if (err) return console.log(err);
-        if(res){
+
+
+
             let transporter = nodemailer.createTransport({
                 service: "gmail",
                 host: "smtp.gmail.com",
@@ -99,10 +98,9 @@ const mailer = async (paymentIntent) => {
                     contentType: 'application/pdf'
                 }]
             });
-        }
-    })
 
- */
+
+
 
    /* html_to_pdf.generatePdf(file, options).then(async (pdfBuffer) => {
         // create reusable transporter object using the default SMTP transport

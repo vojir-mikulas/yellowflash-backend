@@ -49,9 +49,16 @@ app.use(cors({
  })
 app.get("/mailtest",async(req,res)=>{
 
+    try {
         await mailer({
             id:"pi_3LafpAFLfwWiF0fG0IB80yfa"
         })
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(error)
+        // expected output: ReferenceError: nonExistentFunction is not defined
+        // Note - error messages will vary depending on browser
+    }
 
 })
 
