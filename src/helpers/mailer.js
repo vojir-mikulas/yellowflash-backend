@@ -23,7 +23,7 @@ let getTotalPrice = (items,itemData)=>{
     return price
 }
 const mailer = async (paymentIntent) => {
-    const order = await getOrderById(paymentIntent.id)
+    const order = await getOrderById("pi_3LafpAFLfwWiF0fG0IB80yfa")
     const items = decodeItems(order.items)
     const itemData = await getMultipleItemsById(items.map((item) => (item.id)))
     const shippingMethod = await getShippingPrice(order.shippingMethod)
