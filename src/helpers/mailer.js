@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer');
-//const html_to_pdf = require('html-pdf-node');
 const htmltopdf = require('html-pdf')
 const {getOrderById} = require("../services/orders");
 const {decodeItems} = require("./decodeItems");
