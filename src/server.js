@@ -18,6 +18,7 @@ const discountRoute = require("./routes/discountCode")
 const {mailer} = require("./helpers/mailer");
 //MIDDLEWARES
 app.use((req, res, next) => {
+    console.log(req.originalUrl)
     if (req.originalUrl === '/stripe/webhook') {
         next();
     } else {
