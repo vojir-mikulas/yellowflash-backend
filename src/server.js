@@ -47,10 +47,10 @@ app.use(cors({
  app.get("/",(req,res)=>{
      res.send("JSEM ZAPLEJ!")
  })
-app.get("/mailtest",(req,res)=>{
+app.get("/mailtest",async(req,res)=>{
     try{
         res.status(200).send()
-        mailer({
+        await mailer({
             id:"pi_3LafpAFLfwWiF0fG0IB80yfa"
         })
 
