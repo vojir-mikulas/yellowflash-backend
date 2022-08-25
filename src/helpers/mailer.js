@@ -106,6 +106,7 @@ const mailer = async (paymentIntent) => {
         });
     });
    */
+    /*
     pdf.generatePdf(file, options).then(async (pdfBuffer) => {
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
@@ -135,7 +136,7 @@ const mailer = async (paymentIntent) => {
                });
     });
 
-
+ */
 }
 
 module.exports = {
