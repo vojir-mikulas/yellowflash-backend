@@ -7,7 +7,7 @@ const fs = require('fs/promises');
 const {getMultipleItemsById} = require("../services/items");
 const {getShippingPrice} = require("../services/shippingMethod");
 const {getToday} = require("./getToday");
-const pdf = require("html-pdf-node")
+const pdf = require('html-pdf')
 
 
 const createTemplate = async (path, data) => {
@@ -71,13 +71,13 @@ const mailer = async (paymentIntent) => {
     })
 
 
-    let options = {format: 'A4', path:'./public/invoices/xd.pdf'};
-    let file = {content:pdfToSend}
-    /*
+    let options = {format: 'A4', childProcessOptions: { env: { OPENSSL_CONF: '/dev/null' } }};
+
+
 
     pdf.create(pdfToSend, options).toFile('./public/invoices/xd.pdf', async function(err, res) {
         if (err) return console.log(err);
-        console.log(res); // { filename: '/app/businesscard.pdf' }
+        console.log(res);
 
         let transporter = nodemailer.createTransport({
             service: "gmail",
@@ -105,38 +105,7 @@ const mailer = async (paymentIntent) => {
             }]
         });
     });
-   */
-    /*
-    pdf.generatePdf(file, options).then(async (pdfBuffer) => {
-        // create reusable transporter object using the default SMTP transport
-        let transporter = nodemailer.createTransport({
-            service: "gmail",
-            host: "smtp.gmail.com",
-            port: 465,
-            auth: {
-                user: process.env.MAIL_LOGIN, // generated ethereal user
-                pass: process.env.MAIL_PASSWORD, // generated ethereal password
-            },
-            tls: {
-                rejectUnauthorized: false
-            }
-        });
 
-        // send mail with defined transport object
-              let info = await transporter.sendMail({
-                   from: process.env.MAIL_LOGIN, // sender address
-                   to: order.email, // list of receivers
-                   subject: "Platba proběhla úspěšně ✔ - Yellowflash", // Subject line
-                   html: mailToSend, // html body
-                   attachments: [{
-                   filename: 'invoice.pdf',
-                   path: './public/invoices/xd.pdf',
-                   contentType: 'application/pdf'
-               }]
-               });
-    });
-
- */
 }
 
 module.exports = {
