@@ -47,6 +47,17 @@ app.use(cors({
  app.get("/",(req,res)=>{
      res.send("JSEM ZAPLEJ!")
  })
+app.get("/mailtest",(req,res)=>{
+    try{
+        res.status(200).send()
+        mailer({
+            id:"pi_3LafpAFLfwWiF0fG0IB80yfa"
+        })
+
+    }catch{
+        res.status(500).send()
+    }
+})
 
 app.use('/item', itemRoute)
 app.use('/order',orderRoute)
