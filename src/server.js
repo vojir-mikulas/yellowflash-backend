@@ -48,21 +48,6 @@ app.use(cors({
 app.get("/", (req, res) => {
     res.send("JSEM ZAPLEJ!")
 })
-app.get("/mailtest", async (req, res) => {
-
-    try {
-        await mailer({
-            id: "pi_3LagHeFLfwWiF0fG116PAOKu"
-        })
-    } catch (error) {
-        console.error(error);
-        res.status(500).send(error)
-        // expected output: ReferenceError: nonExistentFunction is not defined
-        // Note - error messages will vary depending on browser
-    }
-
-})
-
 
 
 app.use('/item', itemRoute)
