@@ -3,15 +3,21 @@ const nodemailer = require('nodemailer');
 const {getOrderById} = require("../services/orders");
 const {decodeItems} = require("./decodeItems");
 const handlebars = require('handlebars');
-const fs = require('fs/promises');
+const fsp = require('fs/promises');
+const fs = require('fs')
 const {getMultipleItemsById} = require("../services/items");
 const {getShippingPrice} = require("../services/shippingMethod");
 const {getToday} = require("./getToday");
 const pdf = require('html-pdf')
-
+const AWS = require("aws-sdk")
+const path = require("path");
+const s3 = new AWS.S3({
+    accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
+})
 
 const createTemplate = async (path, data) => {
-    const html = await fs.readFile(path, {encoding: 'utf8'});
+    const html = await fsp.readFile(path, {encoding: 'utf8'});
     let template = handlebars.compile(html);
     return template(data);
 }
@@ -79,6 +85,13 @@ const mailer = async (paymentIntent) => {
         if (err) return console.log(err);
         console.log(res);
 
+        const blob = await fs.readFileSync(`./public/invoices/${order.id}.pdf`)
+        const uploadedImage = await s3.upload({
+            Bucket: "yellowflashpublicbucket",
+            Key: `invoices/${order.id}.pdf`,
+            Body: blob,
+        }).promise()
+        /*
         let transporter = nodemailer.createTransport({
             service: "gmail",
             host: "smtp.gmail.com",
@@ -103,7 +116,7 @@ const mailer = async (paymentIntent) => {
                 path: `./public/invoices/${order.id}.pdf`,
                 contentType: 'application/pdf'
             }]
-        });
+        }); */
     });
 
 }

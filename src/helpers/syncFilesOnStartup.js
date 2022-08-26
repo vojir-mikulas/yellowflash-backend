@@ -7,7 +7,41 @@ const path = require("path");
 const fs = require("fs");
 const {ensureExists} = require("./filesystem");
 
+const syncInvoicesOnStartup = ()=>{
+    let keys = [];
+    let invoices = []
+    s3.listObjects({Bucket: "yellowflashpublicbucket", Prefix: 'invoices/'}, function (err, data) {
+        if (err) {
+            console.log("Error", err);
+        } else {
+            keys = data.Contents.map((content) => (content.Key))
+            console.log(keys)
+            invoices = keys.map((key)=>{
+                let arr = key.split("/")
+                return arr[1]
+            })
 
+            invoices.forEach((invoice)=>{
+                let params = {
+                    Bucket: "yellowflashpublicbucket",
+                    Key: `invoices/${invoice}`,
+                }
+
+                s3.getObject(params, (err, data) => {
+                    if (err) console.error(err);
+
+                    // fs.writeFileSync("./image.jpg", data.Body.toString());
+                    fs.writeFile(`./public/invoices/${invoice}`, data.Body,(err) =>{
+                        if (err) throw err;
+                        console.log('Pdf saved!');
+                    })
+
+                });
+            })
+        }
+    });
+
+}
 const syncFilesOnStartup = () => {
     let keys = [];
     let folders = []
@@ -50,7 +84,7 @@ const syncFilesOnStartup = () => {
                         // fs.writeFileSync("./image.jpg", data.Body.toString());
                         fs.writeFile(`./public/img/${folder.name}/${image}`, data.Body,(err) =>{
                             if (err) throw err;
-                            console.log('Saved!');
+                            console.log('Image saved!');
                         })
 
                     });
@@ -64,5 +98,6 @@ const syncFilesOnStartup = () => {
 }
 
 module.exports = {
-    syncFilesOnStartup:syncFilesOnStartup
+    syncFilesOnStartup:syncFilesOnStartup,
+    syncInvoicesOnStartup:syncInvoicesOnStartup
 }

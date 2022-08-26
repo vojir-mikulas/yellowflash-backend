@@ -16,7 +16,7 @@ const shippingMethodRoute = require("./routes/shippingMethod")
 const orderRoute = require("./routes/order")
 const discountRoute = require("./routes/discountCode")
 const {mailer} = require("./helpers/mailer");
-const {syncFilesOnStartup} = require("./helpers/syncFilesOnStartup");
+const {syncFilesOnStartup, syncInvoicesOnStartup} = require("./helpers/syncFilesOnStartup");
 //MIDDLEWARES
 app.use((req, res, next) => {
 
@@ -52,7 +52,7 @@ app.get("/mailtest", async (req, res) => {
 
     try {
         await mailer({
-            id: "pi_3LafpAFLfwWiF0fG0IB80yfa"
+            id: "pi_3LagHeFLfwWiF0fG116PAOKu"
         })
     } catch (error) {
         console.error(error);
@@ -76,5 +76,8 @@ app.use("/sizes", sizeRoute)
 app.use("/stripe", stripeRoute)
 app.listen(process.env.PORT || port, () => {
     console.log("Server is running..")
-    if(process.env.SYNC_FILES) syncFilesOnStartup()
+    if(process.env.SYNC_FILES) {
+        syncInvoicesOnStartup()
+        syncFilesOnStartup()
+    }
 })
