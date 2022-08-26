@@ -1,56 +1,125 @@
-<body style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
+<center class="wrapper" style="margin: 0;padding: 0;color: #292d32;width: 100%;table-layout: fixed;background-color: #ffffff;padding-bottom: 40px;">
+  <table class="main" align="center" style="margin: 0 auto;padding: 15px;color: #292d32;border-spacing: 0;width: 100%;max-width: 600px;font-family: sans-serif;text-align: center;background: #f9f9f9;border-radius: 4px;box-shadow: 0 4px 4px rgba(0,0,0,.25);">
+    <!-- HEADER -->
+    <tr style="margin: 0;padding: 0;color: #292d32;">
+      <td style="margin: 0;padding: 0;color: #292d32;">
+        <table width="100%" align="center" style="margin: 0;padding: 0;color: #292d32;border-spacing: 0;">
+          <tr style="margin: 0;padding: 0;color: #292d32;">
+            <td style="margin: 0;padding: 0;color: #292d32;">
+              <h1 style="margin: auto 0;padding: 0;color: #292d32;font-size: 3rem;border-bottom: 1px solid #e1e1e1;">YELLOWFLASH</h1>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <!-- MESSAGE -->
+    <tr style="margin: 0;padding: 0;color: #292d32;">
+      <td style="margin: 0;padding: 0;color: #292d32;">
+        <table width="100%" style="margin: 0;padding: 0;color: #292d32;border-spacing: 0;">
+          <div class="message" style="margin: 0;padding: 0;color: #292d32;">
+            <h2 style="margin: 15px 0;padding: 0;color: #292d32;">Děkujeme ti za tvůj nákup!
+            </h2>
+            <p style="margin: 8px 0;padding: 0;color: #292d32;">Ahoj {{name}}, jseš fakt supra! ale bez a...br <br style="margin: 0;padding: 0;color: #292d32;">
+              Dáme ti vedet hned, jakmile opustí náš sklad, a odešleme ti e-mail se sledováním, abys
+              vedel/a, kde se tvá zásilka práve nachází.</p>
+          </div>
+        </table>
+      </td>
+    </tr>
+    <!-- ORDER STATUS -->
+    <tr style="margin: 0;padding: 0;color: #292d32;">
+      <td style="margin: 0;padding: 0;color: #292d32;">
+        <table width="100%" align="center" style="margin: 0;padding: 0;color: #292d32;border-spacing: 0;">
+          <tr style="margin: 0;padding: 0;color: #292d32;">
+            <td style="margin: 0;padding: 0;color: #292d32;">
+              <div class="order" style="margin: 0;padding: 30px 10px;color: black;background: #ffc804;">
+                <h4 style="margin: 10px;padding: 0;color: #292d32;">Objednávka <br>
+                  {{order}}</h4>
+                <p style="margin: 0;padding: 0;color: #292d32;">
+                  Předpokládané dodání: <br style="margin: 0;padding: 0;color: #292d32;">
+                  {{deliveryDate}}
+                </p>
+              </div>
+            </td>
+            <td align="center" style="margin: 0;padding: 0;color: #292d32;">
+              <div class="orderStatus" style="margin: 0;padding: 40px 10px;color: #292d32;text-align: left;width: 200px;">
+                <ul style="margin: 0;padding: 0;color: #292d32;list-style: none;">
+                  <li class="highlight" style="margin: 8px 0;padding: 0;color: #e6b505;">● Potvrzeno</li>
+                  <li style="margin: 8px 0;padding: 0;color: #292d32;">○ Expedováno ze skladu</li>
+                  <li style="margin: 8px 0;padding: 0;color: #292d32;">○ Sledování objednávky</li>
+                  <li style="margin: 8px 0;padding: 0;color: #292d32;">○ Potvrzené předání</li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <!-- BILLING INFO -->
+    <tr style="margin: 0;padding: 0;color: #292d32;">
+      <td style="margin: 0;padding: 0;color: #292d32;">
+        <table width="100%" style="margin: 0;padding: 0;color: #292d32;border-spacing: 0;">
+          <tr style="margin: 0;padding: 0;color: #292d32;">
+            <td style="margin: 0;padding: 0;color: #292d32;">
+              <div class="billingInfo" style="margin: 20px 0;padding: 0;color: #292d32;">
+                <h4 style="margin: 10px;padding: 0;color: #292d32;">Adresa dodání:</h4>
+                <address style="margin: 0;padding: 0;color: #292d32;">
+                  {{name}} {{surname}}<br style="margin: 0;padding: 0;color: #292d32;">
+                  {{address}} <br style="margin: 0;padding: 0;color: #292d32;">
+                  {{zipcode}} {{city}} <br style="margin: 0;padding: 0;color: #292d32;">
+                  {{country}}<br style="margin: 0;padding: 0;color: #292d32;">
+                  Tel.: +420 {{phone}} <br style="margin: 0;padding: 0;color: #292d32;">
+                </address>
+              </div>
+            </td>
+            <td style="margin: 0;padding: 0;color: #292d32;">
+              <div class="billingInfo" style="margin: 20px 0;padding: 0;color: #292d32;">
+                <h4 style="margin: 10px;padding: 0;color: #292d32;">Fakturační adresa :
+                </h4>
+                <address style="margin: 0;padding: 0;color: #292d32;">
+                  {{name}} {{surname}}<br style="margin: 0;padding: 0;color: #292d32;">
+                  {{address}} <br style="margin: 0;padding: 0;color: #292d32;">
+                  {{zipcode}} {{city}} <br style="margin: 0;padding: 0;color: #292d32;">
+                  {{country}}<br style="margin: 0;padding: 0;color: #292d32;">
+                  Tel.: +420 {{phone}} <br style="margin: 0;padding: 0;color: #292d32;">
+                </address>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <!-- ORDER REVIEW-->
 
-<center class="wrapper" style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;table-layout: fixed;width: 100%;display: flex;flex-direction: column;align-items: center;gap: 20px;">
-  <!-- Header -->
-  <table role="presentation" border="0" cellspacing="0" width="100%" style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;width: 500px;">
-    <tr style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-      <td style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-        <h1 style="margin: 20px auto;padding: 0;font-family: 'Staatliches', sans-serif;text-align: center;color: #292D32;font-size: 3.3rem;border-bottom: 1px solid;width: 60%;">YELLOWFLASH</h1>
+    <tr style="margin: 0;padding: 0;color: #292d32;">
+      <td style="margin: 0;padding: 0;color: #292d32;">
+        <table width="100%" style="margin: 0;padding: 0;color: #292d32;border-spacing: 0;">
+          <tr style="margin: 0;padding: 0;color: #292d32;">
+            <td style="margin: 0;padding: 0;color: #292d32;">
+              <h4 style="margin: 10px;padding: 0;color: #292d32;">Shrnutí objednávky</h4>
+            </td>
+          </tr>
+          <tr style="margin: 0;padding: 0;color: #292d32;">
+            <td style="margin: 0;padding: 0;color: #292d32;">
+              <table width="100%" style="margin: 0;padding: 0;color: #292d32;border-spacing: 0;">
+                {{{items}}}
+
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <!-- FOOTER -->
+    <tr style="margin: 0;padding: 0;color: #292d32;">
+      <td style="margin: 0;padding: 0;color: #292d32;">
+        <table style="margin: 0;padding: 0;color: #292d32;border-spacing: 0;">
+          <h5 style="margin: 0;padding: 0;color: #292d32;font-size: 0.7rem;">Všeobecné obchodní podmínky | Zásady ochrany osobních údajů</h5>
+          <p class="footer" style="margin: 0;padding: 0;color: #292d32;font-size: 0.6rem;">Yellowflash Česká republika, s.r.o., česká společnost se sídlem na adrese Celkemchábrová 682/14,
+            110 00 Praha 1, zapsaná v obchodním rejstříku vedeném Městským soudem v Praze, oddíl C, vložka
+            2324, identifikační číslo organizace 4242424, daňové identifikační číslo CZ 42424247.</p>
+        </table>
       </td>
     </tr>
   </table>
-
-  <!-- Body -->
-  <table role="presentation" border="0" cellspacing="0" width="100%" style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;width: 500px;">
-    <tr style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-      <td colspan="2" style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-        <h2 style="margin: 15px 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;"> Děkujeme ti za tvůj nákup!</h2>
-        <span style="margin: 8px;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">Ahoj {{name}}, jseš fakt supra! ale bez a... </span>
-        <p style="margin: 8px;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-          Dáme ti vedet hned, jakmile opustí náš sklad, a odešleme ti e-mail se sledováním, abys vedel/a, kde se tvá zásilka práve nachází.
-        </p>
-      </td>
-    </tr>
-    <tr class="address-wrapper" style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;border: #FFC804 1px solid;">
-      <td class="address" style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-        <div style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-          <h3 style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;"> Adresa dodání:</h3>
-          <address style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-            {{name}} {{surname}}<br style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-            {{address}} <br style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-            {{zipcode}} {{city}} <br style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-            {{country}}<br style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-            Tel.: +420 {{phone}} <br style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-          </address>
-        </div>
-
-      </td>
-      <td style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-        <div class="address" style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-          <h3 style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;"> Fakturační adresa :</h3>
-          <address style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-            {{name}} {{surname}}<br style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-            {{address}} <br style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-            {{zipcode}} {{city}} <br style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-            {{country}}<br style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-            Tel.: +420 {{phone}} <br style="margin: 0;padding: 0;font-family: Roboto;text-align: center;color: #292D32;">
-          </address>
-        </div>
-      </td>
-    </tr>
-  </table>
-
-
-
 </center>
-</body>
