@@ -50,6 +50,7 @@ const mailer = async (paymentIntent) => {
     const itemsForEmail = await Promise.all(
         items.map(async (item) => {
             const existingItem = itemData.find((data) => (data.id === item.id));
+            console.log(existingItem)
             return await createTemplate('./src/htmlTemplates/emailItem.html', {
                 itemImage: "https://yellowflash-backend.herokuapp.com/" + existingItem.images[0].url,
                 itemName: existingItem.name,
