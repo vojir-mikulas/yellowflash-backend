@@ -235,6 +235,12 @@ async function getMultipleItemsById(ids) {
                     url: true
                 }
             },
+            sizes: {
+                select: {
+                    id: true,
+                    size: true
+                }
+            },
         }
     })
 }
