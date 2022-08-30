@@ -208,7 +208,47 @@ async function getItemNameById(id) {
 
     })
 }
+async function getRecentItemsByCategory(category){
+    return await prisma.item.findMany({
+        take:-10,
 
+        where:{
+           categories: {
+               some: {
+                   categoryId: category
+               }
+           }
+       },
+        select: {
+            id: true,
+            name: true,
+            details: true,
+            price: true,
+            categories: {
+                select: {
+                    category: true
+                }
+            },
+            sizes: {
+                select: {
+                    id: true,
+                    size: true
+                }
+            },
+            colors: {
+                select: {
+                    color: true
+                }
+            },
+            images: {
+                select: {
+                    id: true,
+                    url: true
+                }
+            },
+        }
+    })
+}
 async function getMultipleItemsById(ids) {
     return await prisma.item.findMany({
         where: {
@@ -253,5 +293,6 @@ module.exports = {
     getItemById: getItemById,
     deleteItemById: deleteItemById,
     updateItem, updateItem,
-    createSizeRelation: createSizeRelation
+    createSizeRelation: createSizeRelation,
+    getRecentItemsByCategory:getRecentItemsByCategory,
 };

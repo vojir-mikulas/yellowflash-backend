@@ -1,5 +1,7 @@
 const express = require('express')
-const {getAllItems, getItemById, deleteItemById,getMultipleItemsById, updateItem, createSizeRelation, createItem} = require("../services/items");
+const {getAllItems, getItemById, deleteItemById,getMultipleItemsById, updateItem, createSizeRelation, createItem,
+    getRecentItemsByCategory
+} = require("../services/items");
 const {createItemID} = require("../helpers/convertor");
 
 const router = express.Router();
@@ -27,7 +29,15 @@ router.delete('/single/:id', async (req, res) => {
     }
 })
 
+router.get("/multipleByCategory/:id",async (req,res)=>{
 
+    try {
+        res.json(await getRecentItemsByCategory(req.params.id))
+
+    } catch {
+        res.sendStatus(500)
+    }
+})
 router.get("/multipleById",async (req,res)=>{
     let ids = req.query.ids ? req.query.ids.split(";") : []
     res.json(await getMultipleItemsById(ids))

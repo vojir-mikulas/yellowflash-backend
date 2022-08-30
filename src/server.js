@@ -48,9 +48,7 @@ app.use(cors({
 app.get("/", (req, res) => {
     res.send("JSEM ZAPLEJ!")
 })
-app.get("/mailtest",()=>{
-    mailer({id:"pi_3LagHeFLfwWiF0fG116PAOKu"})
-})
+
 
 app.use('/item', itemRoute)
 app.use('/order', orderRoute)
