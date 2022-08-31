@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 app.use("/public", express.static('public/img'));
 
 app.use(cors({
-    origin: "*",
+    origin: [process.env.CLIENT_URL,process.env.ADMIN_URL],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }))
